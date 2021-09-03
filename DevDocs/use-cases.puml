@@ -1,0 +1,68 @@
+@startuml
+' syntax: 
+' https://plantuml.com/use-case-diagram
+
+
+left to right direction
+actor "user" as user
+rectangle App {
+
+    rectangle "Must Have" {
+        ' account management
+        usecase "login" as login
+        usecase "logout" as logout
+        usecase "signup" as signup
+
+        ' activities and rewards management
+        usecase "create new activity" as new_activity
+        usecase "add new template activity" as template_activity
+        usecase "edit existing activity" as edit_activity
+
+        usecase "add new reward" as new_reward
+        usecase "add new template reward" as template_reward
+        usecase "edit existing reward" as edit_reward
+
+        usecase "create new task" as new_task
+        usecase "edit existing task" as edit_task
+        usecase "start task" as start_task
+        usecase "end task" as end_task
+    } 
+
+    rectangle "Nice To Have" {
+        ' account management
+        usecase "delete user" as delete_user
+        usecase "edit account details" as edit_account
+        usecase "configure notifications and alarms" as config_notifications
+    }
+
+
+
+
+
+}
+
+logout .> login : extends
+delete_user .> signup : extends
+template_activity .> new_activity : includes
+template_reward .> new_reward : includes
+
+
+
+user --> login
+user --> signup
+user --> delete_user
+user --> new_activity
+user --> template_activity
+user --> edit_activity
+user --> new_reward
+user --> template_reward
+user --> edit_reward
+user --> new_task
+user --> edit_task
+user --> start_task
+user --> end_task
+
+
+@enduml
+
+

@@ -1,0 +1,57 @@
+@startuml
+' syntax: 
+' https://plantuml.com/class-diagram
+
+class User {
+    id : int
+    username : string
+    password : string
+    email : string
+}
+
+User --> "*" Reward
+User --> "*" Activity
+User --> "*" Task
+
+
+class Reward {
+    id : int
+    name : string
+    description : string
+    tags : list of string
+    image : string
+}
+
+class Activity {
+    id : int
+    name : string
+    description : string
+    tags : list of string
+    image : string
+}
+
+
+class Task {
+    id : int
+    name : string
+
+    setRewardRandomizer(RewardRandomizer)
+    SetActivity(Activity)
+    AddReward(Reward)
+    start()
+    end() : Reward
+}
+
+class RewardRandomizer {
+    rewards : list of int
+    probabilities : list of double
+}
+
+
+Task "1" *-- RewardRandomizer
+Task "1" *-- Activity
+Task "1..*" *--  Reward
+
+
+
+@enduml

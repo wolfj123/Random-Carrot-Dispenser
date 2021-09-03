@@ -1,0 +1,47 @@
+@startuml
+' syntax: 
+' https://plantuml.com/sequence-diagram
+
+
+Actor User 
+Actor Anonymous 
+database DB
+
+group signup 
+    Anonymous --> DB : signup
+    Anonymous --> DB : login
+end
+
+group create new activity 
+    group optional 
+        User --> DB : get template activities
+        DB --> User : template activities
+    end
+    User --> DB : add template activities
+end
+
+
+
+' loop *
+'     GameMaster --> Player : notify turn
+'     Player --> GameMaster: get board & moves 
+'     GameMaster --> IRuleSet : get moves
+'     GameMaster <-- IRuleSet : moves
+'     Player <-- GameMaster: board & moves
+'     Player --> GameMaster: send move
+'     GameMaster --> Board : apply move
+'     loop *
+'         Player --> GameMaster: get board & moves
+'         GameMaster --> GameMaster : get chained moves
+'         Player <-- GameMaster: board & moves
+'         Player --> GameMaster: send move
+'         GameMaster --> Board : apply move
+'     end
+'     Player --> GameMaster: get board & moves
+'     Player --> GameMaster: end turn
+'     GameMaster --> IRuleSet : get winners
+'     GameMaster <-- IRuleSet : winners
+' end
+
+
+@enduml
