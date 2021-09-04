@@ -20,6 +20,8 @@ class Reward {
     description : string
     tags : list of string
     image : string
+
+    randomize() : int
 }
 
 class Activity {
