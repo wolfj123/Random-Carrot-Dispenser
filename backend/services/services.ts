@@ -21,6 +21,23 @@ export class Reward {
 }
 
 
+export class Task {
+    id : number;
+    name : string;
+    // rewardRandomizer : Randomizer;
+
+
+
+    start() {
+
+    }
+
+    end() : number {
+
+    }
+
+}
+
 export class Outcome {
     event : number;
     probability : number;
